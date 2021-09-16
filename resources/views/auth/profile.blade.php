@@ -33,12 +33,6 @@
                         </div>
 
                         <div class="mt-4">
-                            <x-label for="old_password" :value="__('Old password')"/>
-
-                            <x-input id="old_password" class="block mt-1 w-full" type="password" name="old_password"/>
-                        </div>
-
-                        <div class="mt-4">
                             <x-label for="password" :value="__('New password')"/>
 
                             <x-input id="password" class="block mt-1 w-full" type="password" name="password"/>
