@@ -10,21 +10,33 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <x-table>
-                        <x-slot name="head">
-                            <x-table.heading>Name</x-table.heading>
-                            <x-table.heading>Email</x-table.heading>
-                        </x-slot>
+                    <div class="overflow-hidden overflow-x-auto min-w-full align-middle sm:rounded-md">
+                        <table class="min-w-full divide-y divide-gray-200 border">
+                            <thead>
+                            <tr>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</span>
+                                </th>
+                                <th class="px-6 py-3 bg-gray-50">
+                                    <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</span>
+                                </th>
+                            </tr>
+                            </thead>
 
-                        <x-slot name="body">
+                            <tbody class="bg-white divide-y divide-gray-200 divide-solid">
                             @foreach($users as $user)
-                                <x-table.row>
-                                    <x-table.cell>{{ $user->name }}</x-table.cell>
-                                    <x-table.cell>{{ $user->email }}</x-table.cell>
-                                </x-table.row>
+                                <tr class="bg-white">
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $user->name }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+                                        {{ $user->email }}
+                                    </td>
+                                </tr>
                             @endforeach
-                        </x-slot>
-                    </x-table>
+                            </tbody>
+                        </table>
+                    </div>
 
                     {{ $users->links() }}
 
