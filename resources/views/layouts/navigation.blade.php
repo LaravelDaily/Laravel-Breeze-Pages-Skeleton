@@ -57,9 +57,9 @@
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 underline dark:text-gray-500">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a>
-                        @endif
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline dark:text-gray-500">Register</a>
+                    @endif
                 @endauth
             </div>
 
@@ -82,8 +82,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <!-- Responsive Settings Options -->
-        @auth
         <div class="pt-4 pb-1 border-t border-gray-200">
+        @auth
             <div class="px-4">
                 <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
@@ -103,7 +103,18 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
-        </div>
+        @else
+            <div class="space-y-1">
+                <x-responsive-nav-link :href="route('login')">
+                    {{ __('Login') }}
+                </x-responsive-nav-link>
+                @if (Route::has('register'))
+                    <x-responsive-nav-link :href="route('register')">
+                        {{ __('Register') }}
+                    </x-responsive-nav-link>
+                @endif
+            </div>
         @endauth
+        </div>
     </div>
 </nav>
